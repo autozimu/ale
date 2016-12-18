@@ -4,7 +4,7 @@ endif
 
 let s:ale_rust_cargocheck_handle_py = expand("<sfile>:h") . "/ale_rust_cargocheck_handle.py"
 
-function! AleRustCargoCheckHandle(buffer, lines) abort
+function! ale_linters#rust#cargocheck#Handle(buffer, lines) abort
     let l:output = []
 
     for l:line in a:lines
@@ -31,5 +31,5 @@ call ale#linter#Define('rust', {
 \ 'output_stream': 'stdout',
 \ 'executable': 'cargo',
 \ 'command': 'cargo check --message-format json ' . g:ale_rust_cargocheck_options,
-\ 'callback': 'AleRustCargoCheckHandle'
+\ 'callback': 'ale_linters#rust#cargocheck#Handle'
 \ })
