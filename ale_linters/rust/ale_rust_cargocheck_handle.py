@@ -7,7 +7,7 @@ try:
     msg = json.loads(msg_str)
     result = {}
 
-    if not 'message' in msg:
+    if msg['reason'] != 'compiler-message':
         raise ValueError()
 
     result['text'] = msg['message']['message']
