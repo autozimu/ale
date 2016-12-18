@@ -10,15 +10,17 @@ function! AleRustCargoCheckHandle(buffer, lines) abort
     for l:line in a:lines
         execute 'pyfile' s:ale_rust_cargocheck_handle_py
 
-        call add(l:output, {
-        \ 'bufnr': a:buffer,
-        \ 'lnum': l:result.lnum,
-        \ 'vcol': 0,
-        \ 'col': l:result.col,
-        \ 'text': l:result.text,
-        \ 'type': l:result.type,
-        \ 'nr': -1,
-        \ })
+        if exists('l:ale_rust_cargocheck_handle_py_result')
+            call add(l:output, {
+                \ 'bufnr': a:buffer,
+                \ 'lnum': l:ale_rust_cargocheck_handle_py_result.lnum,
+                \ 'vcol': 0,
+                \ 'col': l:ale_rust_cargocheck_handle_py_result.col,
+                \ 'text': l:ale_rust_cargocheck_handle_py_result.text,
+                \ 'type': l:ale_rust_cargocheck_handle_py_result.type,
+                \ 'nr': -1,
+                \ })
+        endif
     endfor
 
     return l:output

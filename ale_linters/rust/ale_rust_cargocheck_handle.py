@@ -23,6 +23,6 @@ try:
 
     result['type'] = 'E' if msg['message']['level'] == 'error' else 'W'
 
-    vim.command("let l:result = json_decode('%s')" % json.dumps(result))
+    vim.command("let l:ale_rust_cargocheck_handle_py_result = json_decode('%s')" % json.dumps(result))
 except ValueError:
     pass
