@@ -7,6 +7,9 @@ try:
     msg = json.loads(msg_str)
     result = {}
 
+    if not 'message' in msg:
+        raise ValueError()
+
     result['text'] = msg['message']['message']
     for i in range(len(msg['message']['children'])):
         result['text'] += ': ' if i == 0 else ','
